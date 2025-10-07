@@ -4,41 +4,120 @@ import json
 import requests
 
 def get_data(username: str):
-  request = requests.get(f"https://api.github.com/users/{username}/events")
-  if not os.path.exists("gh-data.json"):
-    with open("gh-data.json", "w") as json_file:
-      request_data = request.json()
-      json.dump(request_data, json_file, indent=2)
-  else:
-    with open("gh-data.json", "w") as json_file:
-      request_data = request.json()
-      json.dump(request_data, json_file, indent=2)
+    request = requests.get(f"https://api.github.com/users/{username}/events")
+    if not os.path.exists("gh-data.json"):
+        with open("gh-data.json", "w") as json_file:
+            request_data = request.json()
+            json.dump(request_data, json_file, indent=2)
+    else:
+        with open("gh-data.json", "w") as json_file:
+            request_data = request.json()
+            json.dump(request_data, json_file, indent=2)
 
-def find_events(username: str):
+
+def find_total(username: str):
+  with open("gh-data.json", "r") as json_file:
+    push_count = 0
+    pull_count = 0
+    star_count = 0
+    create_count = 0
+    comment_count = 0
+    fork_count = 0
+    json_data = json.load(json_file)
+    for data in json_data:
+      if data["type"] == "PushEvent":
+        push_count += 1
+      if data["type"] == "PullRequestEvent":
+        pull_count += 1
+      if data["type"] == "WatchEvent":
+        star_count += 1      
+      if data["type"] == "CreateEvent":
+        create_count += 1
+      if data["type"] == "IssueCommentEvent":
+        comment_count += 1
+      if data["type"] == "ForkEvent":
+        fork_count += 1
+    print(f"{username} pushed {push_count} times")
+    print(f"{username} pulled {pull_count} times")
+    print(f"{username} starred {star_count} times")
+    print(f"{username} created {create_count} times")
+    print(f"{username} commented {comment_count} times")
+    print(f"{username} forked {fork_count} times")
+
+def find_push(username: str):
     with open("gh-data.json", "r") as json_file:
       push_count = 0
-      pull_count = 0
-      create_count = 0
-      star_count = 0
-      comment_count = 0
-      fork_count = 0
       json_data = json.load(json_file)
       for data in json_data:
         if data["type"] == "PushEvent":
-          push_count = push_count + 1
-        if data["type"] == "PullRequestEvent":
-          pull_count = pull_count + 1
-        if data["type"] == "CreateEvent":
-          create_count = create_count + 1
-        if data["type"] == "WatchEvent":
-          star_count = star_count + 1
-        if data["type"] == "IssueCommentEvent":
-          comment_count = comment_count + 1
-        if data["type"] == "ForkEvent":
-          fork_count = fork_count + 1
-      print(f"{username}'s recent Pushes: {push_count}")
-      print(f"{username}'s recent Pulls: {pull_count}")
-      print(f"{username}'s recent Creations: {create_count}")
-      print(f"{username}'s recent Stars: {star_count}")
-      print(f"{username}'s recent Comments: {comment_count}")
-      print(f"{username}'s recent Forks: {fork_count}")
+          push_count += 1
+          the_repo = data["repo"]
+          repo_name = the_repo["name"]
+          print(f"Push #{push_count}")
+          print(f"{username} pushed to repo {repo_name}")
+          print("------------------------------------")
+
+def find_pull(username: str):
+  pull_count = 0
+  with open("gh-data.json", "r") as json_file:
+    json_data = json.load(json_file)
+    for data in json_data:
+      if data["type"] == "PullRequestEvent":
+        pull_count += 1
+        the_repo = data["repo"]
+        repo_name = the_repo["name"]
+        print(f"Pull #{pull_count}")
+        print(f"{username} pulled from repo: {repo_name}")
+        print("------------------------------------")
+
+def find_star(username: str):
+  star_count = 0
+  with open("gh-data.json", "r") as json_file:
+    json_data = json.load(json_file)
+    for data in json_data:
+      if data["type"] == "WatchEvent":
+        star_count += 1
+        the_repo = data["repo"]
+        repo_name = the_repo["name"]
+        print(f"Star #{star_count}")
+        print(f"{username} starred repo: {repo_name}")
+        print("------------------------------------")
+
+def find_create(username: str):
+  create_count = 0
+  with open("gh-data.json", "r") as json_file:
+    json_data = json.load(json_file)
+    for data in json_data:
+      if data["type"] == "CreateEvent":
+        create_count += 1
+        the_repo = data["repo"]
+        repo_name = the_repo["name"]
+        print(f"Create #{create_count}")
+        print(f"{username} did a create for repo: {repo_name}")
+        print("------------------------------------")
+
+def find_comment(username: str):
+  comment_count = 0
+  with open("gh-data.json", "r") as json_file:
+    json_data = json.load(json_file)
+    for data in json_data:
+      if data["type"] == "IssueCommentEvent":
+        comment_count += 1
+        the_repo = data["repo"]
+        repo_name = the_repo["name"]
+        print(f"Comment #{comment_count}")
+        print(f"{username} commented repo: {repo_name}")
+        print("------------------------------------")
+
+def find_fork(username: str):
+  fork_count = 0
+  with open("gh-data.json", "r") as json_file:
+    json_data = json.load(json_file)
+    for data in json_data:
+      if data["type"] == "ForkEvent":
+        fork_count += 1
+        the_repo = data["repo"]
+        repo_name = the_repo["name"]
+        print(f"Fork #{fork_count}")
+        print(f"{username} forked repo: {repo_name}")
+        print("------------------------------------")
