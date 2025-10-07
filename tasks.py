@@ -15,9 +15,8 @@ def get_data(username: str):
         with open("gh-data.json", "w") as json_file:
             request_data = request.json()
             if not request_data:
-              print("No recent user activity")
+              print("No recent user activity")            
             json.dump(request_data, json_file, indent=2)
-
 
 def find_total(username: str):
   with open("gh-data.json", "r") as json_file:
