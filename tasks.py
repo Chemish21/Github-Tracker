@@ -8,10 +8,14 @@ def get_data(username: str):
     if not os.path.exists("gh-data.json"):
         with open("gh-data.json", "w") as json_file:
             request_data = request.json()
+            if not request_data:
+              print("No recent user activity")
             json.dump(request_data, json_file, indent=2)
     else:
         with open("gh-data.json", "w") as json_file:
             request_data = request.json()
+            if not request_data:
+              print("No recent user activity")
             json.dump(request_data, json_file, indent=2)
 
 
