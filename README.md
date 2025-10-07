@@ -8,7 +8,7 @@ Example: username123 -t
 
 **Options**: -t, -p, -pl, -s, -cr, -co, and -f  
 **-t** or **Total**: Displays a total count of all recent user events  
-**-p** or** Push**: Displays all recent user push  actions  
+**-p** or **Push**: Displays all recent user push  actions  
 **-pl** or **Pull**: Displays all recent user pull actions  
 **-s** or **Star**: Displays all recent user star actions  
 **-cr** or **Create**: Displays all recent user create actions  
