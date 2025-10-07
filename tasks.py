@@ -2,9 +2,13 @@
 import os
 import json
 import requests
+import sys
 
 def get_data(username: str):
     request = requests.get(f"https://api.github.com/users/{username}/events")
+    if not request:
+      print("User does not exist")
+      sys.exit()
     if not os.path.exists("gh-data.json"):
         with open("gh-data.json", "w") as json_file:
             request_data = request.json()
