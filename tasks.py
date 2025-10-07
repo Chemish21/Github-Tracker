@@ -37,12 +37,12 @@ def find_total(username: str):
         comment_count += 1
       if data["type"] == "ForkEvent":
         fork_count += 1
-    print(f"{username} pushed {push_count} times")
-    print(f"{username} pulled {pull_count} times")
-    print(f"{username} starred {star_count} times")
-    print(f"{username} created {create_count} times")
-    print(f"{username} commented {comment_count} times")
-    print(f"{username} forked {fork_count} times")
+    print(f"Total {username} pushes: {push_count}")
+    print(f"Total {username} pulls: {pull_count}")
+    print(f"Total {username} stars: {star_count}")
+    print(f"Total {username} creates: {create_count}")
+    print(f"Total {username} comments: {comment_count}")
+    print(f"Total {username} forks: {fork_count}")
 
 def find_push(username: str):
     with open("gh-data.json", "r") as json_file:
