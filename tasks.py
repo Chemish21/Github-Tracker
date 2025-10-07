@@ -116,7 +116,7 @@ def find_comment(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Comment #{comment_count}")
-        print(f"{actor_name} left a comment regarding {username}'s repo: {repo_name}")
+        print(f"{actor_name} commented regarding {username}'s repo: {repo_name}")
         print("------------------------------------")
 
 def find_fork(username: str):
