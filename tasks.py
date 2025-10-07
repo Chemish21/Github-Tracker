@@ -33,23 +33,19 @@ def find_total(username: str):
     comment_count = 0
     fork_count = 0
     json_data = json.load(json_file)
-    if not json_data:
-      print("No recent user activity or user does not exist")
-      return
-    else:
-      for data in json_data:
-        if data["type"] == "PushEvent":
-          push_count += 1
-        if data["type"] == "PullRequestEvent":
-          pull_count += 1
-        if data["type"] == "WatchEvent":
-          star_count += 1      
-        if data["type"] == "CreateEvent":
-          create_count += 1
-        if data["type"] == "IssueCommentEvent":
-          comment_count += 1
-        if data["type"] == "ForkEvent":
-          fork_count += 1
+    for data in json_data:
+      if data["type"] == "PushEvent":
+        push_count += 1
+      if data["type"] == "PullRequestEvent":
+        pull_count += 1
+      if data["type"] == "WatchEvent":
+        star_count += 1      
+      if data["type"] == "CreateEvent":
+        create_count += 1
+      if data["type"] == "IssueCommentEvent":
+        comment_count += 1
+      if data["type"] == "ForkEvent":
+        fork_count += 1
     print(f"Total {username} pushes: {push_count}")
     print(f"Total {username} pulls: {pull_count}")
     print(f"Total {username} stars: {star_count}")
@@ -61,9 +57,6 @@ def find_push(username: str):
     with open("gh-data.json", "r") as json_file:
       push_count = 0
       json_data = json.load(json_file)
-      if not json_data:
-        print("No recent user activity or user does not exist")
-        return
       for data in json_data:
         if data["type"] == "PushEvent":
           push_count += 1
@@ -79,9 +72,6 @@ def find_pull(username: str):
   pull_count = 0
   with open("gh-data.json", "r") as json_file:
     json_data = json.load(json_file)
-    if not json_data:
-      print("No recent user activity or user does not exist")
-      return
     for data in json_data:
       if data["type"] == "PullRequestEvent":
         pull_count += 1
@@ -97,9 +87,6 @@ def find_star(username: str):
   star_count = 0
   with open("gh-data.json", "r") as json_file:
     json_data = json.load(json_file)
-    if not json_data:
-      print("No recent user activity or user does not exist")
-      return
     for data in json_data:
       if data["type"] == "WatchEvent":
         star_count += 1
@@ -115,9 +102,6 @@ def find_create(username: str):
   create_count = 0
   with open("gh-data.json", "r") as json_file:
     json_data = json.load(json_file)
-    if not json_data:
-      print("No recent user activity or user does not exist")
-      return
     for data in json_data:
       if data["type"] == "CreateEvent":
         create_count += 1
@@ -133,9 +117,6 @@ def find_comment(username: str):
   comment_count = 0
   with open("gh-data.json", "r") as json_file:
     json_data = json.load(json_file)
-    if not json_data:
-      print("No recent user activity or user does not exist")
-      return
     for data in json_data:
       if data["type"] == "IssueCommentEvent":
         comment_count += 1
@@ -151,9 +132,6 @@ def find_fork(username: str):
   fork_count = 0
   with open("gh-data.json", "r") as json_file:
     json_data = json.load(json_file)
-    if not json_data:
-      print("No recent user activity or user does not exist")
-      return
     for data in json_data:
       if data["type"] == "ForkEvent":
         fork_count += 1
