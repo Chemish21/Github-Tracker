@@ -7,10 +7,10 @@ Source: https://roadmap.sh/projects/github-user-activity
 Example: username123 -t  
 
 **Options**: -t, -p, -pl, -s, -cr, -co, and -f  
-**-t** or **Total**: Displays a total count of all recent user actions  
-**-p** or **Push**: Displays all recent user push  actions  
-**-pl** or **Pull**: Displays all recent user pull actions  
-**-s** or **Star**: Displays all recent user star actions  
-**-cr** or **Create**: Displays all recent user create actions  
-**-co** or **Comment**: Displays all recent user comment actions  
-**-f** or **Fork**: Displays all recent user fork actions
+**-t** or **Total**: Displays a total count of all recent events  
+**-p** or **Push**: Displays all recent user push events  
+**-pl** or **Pull**: Displays all recent user pull events  
+**-s** or **Star**: Displays all recent user star events  
+**-cr** or **Create**: Displays all recent user create events  
+**-co** or **Comment**: Displays all recent user comment events  
+**-f** or **Fork**: Displays all recent user fork events
