@@ -52,11 +52,11 @@ def find_push(username: str):
         if data["type"] == "PushEvent":
           push_count += 1
           the_actor = data["actor"]
-          actor = the_actor["login"]
+          actor_name = the_actor["login"]
           the_repo = data["repo"]
           repo_name = the_repo["name"]
           print(f"Push #{push_count}")
-          print(f"{actor} pushed to {username}'s repo: {repo_name}")
+          print(f"{actor_name} pushed to {username}'s repo: {repo_name}")
           print("------------------------------------")
 
 def find_pull(username: str):
@@ -67,11 +67,11 @@ def find_pull(username: str):
       if data["type"] == "PullRequestEvent":
         pull_count += 1
         the_actor = data["actor"]
-        actor = the_actor["login"]
+        actor_name = the_actor["login"]
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Pull #{pull_count}")
-        print(f"{actor} pulled form {username}'s repo: {repo_name}")
+        print(f"{actor_name} pulled form {username}'s repo: {repo_name}")
         print("------------------------------------")
 
 def find_star(username: str):
@@ -82,11 +82,11 @@ def find_star(username: str):
       if data["type"] == "WatchEvent":
         star_count += 1
         the_actor = data["actor"]
-        actor = the_actor["login"]
+        actor_name = the_actor["login"]
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Star #{star_count}")
-        print(f"{actor} starred {username}'s repo: {repo_name}")
+        print(f"{actor_name} starred {username}'s repo: {repo_name}")
         print("------------------------------------")
 
 def find_create(username: str):
@@ -97,11 +97,11 @@ def find_create(username: str):
       if data["type"] == "CreateEvent":
         create_count += 1
         the_actor = data["actor"]
-        actor = the_actor["login"]
+        actor_name = the_actor["login"]
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Create #{create_count}")
-        print(f"{actor} created with {username}'s repo: {repo_name}")
+        print(f"{actor_name} created with {username}'s repo: {repo_name}")
         print("------------------------------------")
 
 def find_comment(username: str):
@@ -112,11 +112,11 @@ def find_comment(username: str):
       if data["type"] == "IssueCommentEvent":
         comment_count += 1
         the_actor = data["actor"]
-        actor = the_actor["login"]
+        actor_name = the_actor["login"]
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Comment #{comment_count}")
-        print(f"{actor} left a comment regarding {username}'s repo: {repo_name}")
+        print(f"{actor_name} left a comment regarding {username}'s repo: {repo_name}")
         print("------------------------------------")
 
 def find_fork(username: str):
@@ -127,9 +127,9 @@ def find_fork(username: str):
       if data["type"] == "ForkEvent":
         fork_count += 1
         the_actor = data["actor"]
-        actor = the_actor["login"]
+        actor_name = the_actor["login"]
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Fork #{fork_count}")
-        print(f"{actor} forked {username}'s repo: {repo_name}")
+        print(f"{actor_name} forked {username}'s repo: {repo_name}")
         print("------------------------------------")
