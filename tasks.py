@@ -71,7 +71,7 @@ def find_pull(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Pull #{pull_count}")
-        print(f"{actor_name} pulled form {username}'s repo: {repo_name}")
+        print(f"{actor_name} pulled from {username}'s repo: {repo_name}")
         print("------------------------------------")
 
 def find_star(username: str):
