@@ -6,7 +6,7 @@ import sys
 
 def get_data(username: str):
     request = requests.get(f"https://api.github.com/users/{username}/events")
-    if not request:
+    if request.status_code == 404:
       print("User does not exist")
       sys.exit()
     if not os.path.exists("gh-data.json"):
@@ -14,12 +14,14 @@ def get_data(username: str):
             request_data = request.json()
             if not request_data:
               print("No recent user activity")
+              sys.exit()
             json.dump(request_data, json_file, indent=2)
     else:
         with open("gh-data.json", "w") as json_file:
             request_data = request.json()
             if not request_data:
-              print("No recent user activity")            
+              print("No recent user activity")
+              sys.exit()            
             json.dump(request_data, json_file, indent=2)
 
 def find_total(username: str):
