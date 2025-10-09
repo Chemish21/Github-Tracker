@@ -4,7 +4,15 @@ import tasks
 
 def main():
     
-    tasks.get_data(args.username)
+    if tasks.file_exist() == True:
+      the_file_name = tasks.get_file_name()
+      confirmed = tasks.confirm_data(args.username, the_file_name)
+      if confirmed == True:
+          pass
+      else:
+          tasks.get_data(args.username)
+    else:
+      tasks.get_data(args.username)
 
     if args.total:
         tasks.find_total(args.username)
