@@ -3,21 +3,38 @@ import os
 import json
 import requests
 import sys
+import re
+
+def file_exist():
+  if os.path.exists("gh-data.json"):
+    return True
+  else:
+    return False
+
+def confirm_data(username: str, name_in_file: str):
+  if username == name_in_file:
+    return True
+  else:
+    return False
+  
+def get_file_name():
+  with open("gh-data.json") as json_file:
+    json_data = json.load(json_file)
+    for data in json_data:
+      the_repo = data["repo"]
+      repo_name = the_repo["name"]
+    match_name = re.match(r"([^/]+)", repo_name)
+    if match_name:
+      file_name = match_name.group(1)
+    return file_name
 
 def get_data(username: str):
     request = requests.get(f"https://api.github.com/users/{username}/events")
     if request.status_code == 404:
       print("User does not exist")
       sys.exit()
-    if not os.path.exists("gh-data.json"):
-        with open("gh-data.json", "w") as json_file:
-            request_data = request.json()
-            if not request_data:
-              print("No recent user activity")
-              sys.exit()
-            json.dump(request_data, json_file, indent=2)
     else:
-        with open("gh-data.json", "w") as json_file:
+      with open("gh-data.json", "w") as json_file:
             request_data = request.json()
             if not request_data:
               print("No recent user activity")
