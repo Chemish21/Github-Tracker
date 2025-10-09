@@ -26,6 +26,7 @@ def get_file_name():
     for data in json_data:
       the_repo = data["repo"]
       repo_name = the_repo["name"]
+      break
     match_name = re.match(r"([^/]+)", repo_name)
     if match_name:
       file_name = match_name.group(1)
