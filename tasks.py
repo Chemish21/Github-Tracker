@@ -5,6 +5,10 @@ import requests
 import sys
 import re
 
+def inform():
+  print("Listed New to Old")
+  print("-----------------")
+
 def file_exist():
   #Confirm if file exists
   if os.path.exists("gh-data.json"):
@@ -90,7 +94,7 @@ def find_push(username: str):
           repo_name = the_repo["name"]
           print(f"Push #{push_count}")
           print(f"{actor_name} pushed to {username}'s repo: {repo_name}")
-          print("------------------------------------")
+          print()
 
 def find_pull(username: str):
   #Finds all recent account pulls
@@ -106,7 +110,7 @@ def find_pull(username: str):
         repo_name = the_repo["name"]
         print(f"Pull #{pull_count}")
         print(f"{actor_name} pulled from {username}'s repo: {repo_name}")
-        print("------------------------------------")
+        print()
 
 def find_star(username: str):
   #Finds all recent account stars
@@ -122,7 +126,7 @@ def find_star(username: str):
         repo_name = the_repo["name"]
         print(f"Star #{star_count}")
         print(f"{actor_name} starred {username}'s repo: {repo_name}")
-        print("------------------------------------")
+        print()
 
 def find_create(username: str):
   #Finds all recent account creates
@@ -138,7 +142,7 @@ def find_create(username: str):
         repo_name = the_repo["name"]
         print(f"Create #{create_count}")
         print(f"{actor_name} created with {username}'s repo: {repo_name}")
-        print("------------------------------------")
+        print()
 
 def find_comment(username: str):
   #Finds all recent account comments
@@ -154,7 +158,7 @@ def find_comment(username: str):
         repo_name = the_repo["name"]
         print(f"Comment #{comment_count}")
         print(f"{actor_name} commented regarding {username}'s repo: {repo_name}")
-        print("------------------------------------")
+        print()
 
 def find_fork(username: str):
   #Finds all recent account forks
@@ -170,4 +174,4 @@ def find_fork(username: str):
         repo_name = the_repo["name"]
         print(f"Fork #{fork_count}")
         print(f"{actor_name} forked {username}'s repo: {repo_name}")
-        print("------------------------------------")
+        print()
