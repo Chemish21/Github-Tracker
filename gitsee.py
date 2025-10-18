@@ -17,21 +17,27 @@ def main():
           tasks.get_data(args.username)
     else:
       tasks.get_data(args.username)
-      
+
     #Tasks run based on option used
     if args.total:
         tasks.find_total(args.username)
     elif args.push:
+        tasks.inform()
         tasks.find_push(args.username)
     elif args.pull:
+        tasks.inform()
         tasks.find_pull(args.username)
     elif args.star:
+        tasks.inform()
         tasks.find_star(args.username)
     elif args.create:
+        tasks.inform()
         tasks.find_create(args.username)
     elif args.comment:
+        tasks.inform()
         tasks.find_comment(args.username)
     elif args.fork:
+        tasks.inform()
         tasks.find_fork(args.username)
     else:
         print("No valid option selected. Use -t, -p, -pl, -s, -cr, -co, or -f")
