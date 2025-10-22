@@ -7,8 +7,8 @@ def main():
     if tasks.file_exist() == True:
 
       #Confirming if username matches current stored data
-      the_file_name = tasks.get_file_name()
-      confirmed = tasks.confirm_data(args.username, the_file_name)
+      the_name = tasks.get_name_in_file()
+      confirmed = tasks.confirm_data(args.username, the_name)
       
       #If data matches move to tasks, else, need to get/update data
       if confirmed == True:
