@@ -11,19 +11,13 @@ def inform():
 
 def file_exist():
   #Confirm if file exists
-  if os.path.exists("gh-data.json"):
-    return True
-  else:
-    return False
+  return os.path.exists("gh-data.json")
 
 def confirm_data(username: str, name_in_file: str):
   #Confirm username matches username in file repo
-  if username == name_in_file:
-    return True
-  else:
-    return False
+  return username == name_in_file
   
-def get_file_name():
+def get_name_in_file():
   #Extracts username from first half of repo path
   with open("gh-data.json") as json_file:
     json_data = json.load(json_file)
@@ -73,12 +67,12 @@ def find_total(username: str):
         comment_count += 1
       if data["type"] == "ForkEvent":
         fork_count += 1
-    print(f"Recent {username} pushes: {push_count}")
-    print(f"Recent {username} pulls: {pull_count}")
-    print(f"Recent {username} stars: {star_count}")
-    print(f"Recent {username} creates: {create_count}")
-    print(f"Recent {username} comments: {comment_count}")
-    print(f"Recent {username} forks: {fork_count}")
+    print(f"{username} pushes: {push_count}")
+    print(f"{username} pulls: {pull_count}")
+    print(f"{username} stars: {star_count}")
+    print(f"{username} creates: {create_count}")
+    print(f"{username} comments: {comment_count}")
+    print(f"{username} forks: {fork_count}")
 
 def find_push(username: str):
     #Finds all recent account pushes
@@ -93,7 +87,7 @@ def find_push(username: str):
           the_repo = data["repo"]
           repo_name = the_repo["name"]
           print(f"Push #{push_count}")
-          print(f"{actor_name} pushed to {username}'s repo: {repo_name}")
+          print(f"{actor_name} pushed to repo: {repo_name}")
           print()
 
 def find_pull(username: str):
@@ -109,7 +103,7 @@ def find_pull(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Pull #{pull_count}")
-        print(f"{actor_name} pulled from {username}'s repo: {repo_name}")
+        print(f"{actor_name} pulled from repo: {repo_name}")
         print()
 
 def find_star(username: str):
@@ -125,7 +119,7 @@ def find_star(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Star #{star_count}")
-        print(f"{actor_name} starred {username}'s repo: {repo_name}")
+        print(f"{actor_name} starred repo: {repo_name}")
         print()
 
 def find_create(username: str):
@@ -141,7 +135,7 @@ def find_create(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Create #{create_count}")
-        print(f"{actor_name} created with {username}'s repo: {repo_name}")
+        print(f"{actor_name} created repo: {repo_name}")
         print()
 
 def find_comment(username: str):
@@ -157,7 +151,7 @@ def find_comment(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Comment #{comment_count}")
-        print(f"{actor_name} commented regarding {username}'s repo: {repo_name}")
+        print(f"{actor_name} commented repo: {repo_name}")
         print()
 
 def find_fork(username: str):
@@ -173,5 +167,5 @@ def find_fork(username: str):
         the_repo = data["repo"]
         repo_name = the_repo["name"]
         print(f"Fork #{fork_count}")
-        print(f"{actor_name} forked {username}'s repo: {repo_name}")
+        print(f"{actor_name} forked repo: {repo_name}")
         print()
