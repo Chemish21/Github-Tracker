@@ -7,7 +7,7 @@ Source: https://roadmap.sh/projects/github-user-activity
 **Example**: python3 gitsee.py username123 -t  
 
 **Note**:  
-When data is listed it is done by newest to oldest.  
+When data is listed it is done by newest at the start to oldest at the end.  
 Using any option that is not **-t** or **--total** lists up to the last 30 events that have occured.
 
 **Options**: -t, -p, -pl, -s, -cr, -co, and -f  
