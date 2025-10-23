@@ -6,7 +6,7 @@ Source: https://roadmap.sh/projects/github-user-activity
 **Usage**: Invoke Python then Enter github username and option  
 **Example**: python3 gitsee.py username123 -t  
 
-**Note**: 
+**Note**:  
 When data is listed it is done by newest to oldest.  
 Using any option that is not **-t** or **--total** lists up to the last 30 events that have occured.
 
