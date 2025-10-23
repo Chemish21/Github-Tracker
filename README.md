@@ -3,8 +3,8 @@ This program displays the recent activity of a github account.
 This idea was taken from suggested projects by roadmap.sh.  
 Source: https://roadmap.sh/projects/github-user-activity
 
-**Usage**: Enter github username and option  
-**Example**: username123 -t  
+**Usage**: Invoke Python then Enter github username and option  
+**Example**: python3 gitsee.py username123 -t  
 
 **Options**: -t, -p, -pl, -s, -cr, -co, and -f  
 **-t** or **Total**: Displays a total count of all recent events  
